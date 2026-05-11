@@ -1,0 +1,63 @@
+[
+  {
+    "id": "dsp",
+    "name": "Xử Lý Tín Hiệu Số",
+    "shortName": "DSP",
+    "pass": "N24DCVT133",
+    "chapters": [
+      {
+        "title": "Chương 1",
+        "exams": [
+          { "label": "Luyện Tập P1", "url": "https://azota.vn/de-thi/manguz" },
+          { "label": "Luyện Tập P2", "url": "https://azota.vn/de-thi/k5kuwl" },
+          { "label": "Đề FULL",      "url": "https://azota.vn/de-thi/5l7rjw", "full": true }
+        ]
+      },
+      {
+        "title": "Chương 2",
+        "exams": [
+          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/8ob3ss" },
+          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/cxq8ki", "full": true }
+        ]
+      },
+      {
+        "title": "Chương 3",
+        "exams": [
+          { "label": "Luyện Tập P1", "url": "https://azota.vn/de-thi/cl3ajd" },
+          { "label": "Luyện Tập P2", "url": "https://azota.vn/de-thi/bgyebm" },
+          { "label": "Đề FULL",      "url": "https://azota.vn/de-thi/9hov7h", "full": true }
+        ]
+      },
+      {
+        "title": "Chương 4",
+        "exams": [
+          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/oniovr" },
+          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/a3yrmv", "full": true }
+        ]
+      },
+      {
+        "title": "Chương 5",
+        "exams": [
+          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/l5avci" },
+          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/wae0tc", "full": true }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "example2",
+    "name": "Môn Học Khác (Ví Dụ)",
+    "shortName": "VD2",
+    "pass": "PASSVIDU2",
+    "chapters": [
+      {
+        "title": "Chương 1",
+        "exams": [
+          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/xxxxxx" },
+          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/yyyyyy", "full": true }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Đề Thi - PTIT</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0050e6;
+            --blue-dark: #003cb3;
+            --blue-light: #e8f0ff;
+            --surface: #f5f7fa;
+            --sidebar-bg: #fff;
+            --border: #e0e7ef;
+            --text: #1a2233;
+            --muted: #7a8599;
+            --success: #1a7f37;
+            --sidebar-width: 270px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            display: flex;
+            height: 100vh;
+            background: var(--surface);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        /* ── SIDEBAR ─────────────────────── */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.25s ease, opacity 0.25s ease;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        body.sidebar-hidden .sidebar { width: 0; opacity: 0; pointer-events: none; }
+
+        .sidebar-header {
+            padding: 16px;
+            background: var(--blue);
+            color: #fff;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar-header-text { flex: 1; min-width: 0; }
+        .sidebar-logo {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; opacity: 0.7; margin-bottom: 2px;
+        }
+        .sidebar-title {
+            font-size: 0.92rem; font-weight: 700; line-height: 1.3;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .change-subject-btn {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: #fff;
+            border-radius: 6px;
+            padding: 5px 9px;
+            font-size: 0.72rem; font-weight: 600;
+            font-family: inherit; cursor: pointer;
+            transition: background 0.15s; white-space: nowrap;
+        }
+        .change-subject-btn:hover { background: rgba(255,255,255,0.28); }
+
+        /* Chapter list */
+        .chapter-list {
+            flex: 1; overflow-y: auto; padding: 6px 0 12px;
+            scrollbar-width: thin; scrollbar-color: #d0d8e8 transparent;
+        }
+        .chapter-group { margin-bottom: 4px; }
+        .chapter-label {
+            padding: 8px 16px 5px;
+            font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--muted);
+        }
+        .exam-item {
+            padding: 9px 16px 9px 20px;
+            cursor: pointer; border-left: 3px solid transparent;
+            font-size: 0.85rem; color: #3a4559;
+            transition: background 0.12s, color 0.12s, border-color 0.12s;
+            display: flex; align-items: center; gap: 8px; line-height: 1.4;
+        }
+        .exam-item::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background: #c8d4e8; flex-shrink: 0; transition: background 0.12s;
+        }
+        .exam-item:hover { background: var(--blue-light); color: var(--blue); }
+        .exam-item:hover::before { background: var(--blue); }
+        .exam-item.active {
+            background: var(--blue-light); color: var(--blue);
+            border-left-color: var(--blue); font-weight: 600;
+        }
+        .exam-item.active::before { background: var(--blue); }
+        .tag-full {
+            margin-left: auto; font-size: 0.63rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            background: #fef3c7; color: #92400e; padding: 1px 5px; border-radius: 3px;
+        }
+
+        /* ── MAIN ─────────────────────────── */
+        .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+        .topbar {
+            display: flex; align-items: center; gap: 10px;
+            padding: 11px 18px; background: #fff;
+            border-bottom: 1px solid var(--border); flex-shrink: 0;
+        }
+        .toggle-btn {
+            width: 34px; height: 34px; border: 1px solid var(--border);
+            border-radius: 7px; background: #fff; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; transition: background 0.15s; color: var(--text);
+        }
+        .toggle-btn:hover { background: var(--blue-light); }
+        .topbar-title {
+            font-size: 0.88rem; font-weight: 600; color: var(--text);
+            flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .topbar-subject { font-size: 0.75rem; color: var(--muted); font-weight: 400; }
+        .topbar-actions { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+
+        .btn {
+            padding: 7px 14px; border-radius: 7px; font-family: inherit;
+            font-size: 0.82rem; font-weight: 600; cursor: pointer;
+            transition: background 0.15s, transform 0.1s; border: none; white-space: nowrap;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn-primary { background: var(--blue); color: #fff; }
+        .btn-primary:hover { background: var(--blue-dark); }
+        .btn-outline { background: #fff; color: var(--blue); border: 1px solid #c5d4ef; }
+        .btn-outline:hover { background: var(--blue-light); }
+
+        .frame-wrap { flex: 1; padding: 16px; min-height: 0; }
+        iframe {
+            width: 100%; height: 100%; border: none;
+            border-radius: 10px; box-shadow: 0 2px 16px rgba(0,40,120,0.08);
+            display: block; background: #fff;
+        }
+
+        /* ── LOADING ────────────────────── */
+        .loading-screen {
+            position: fixed; inset: 0; background: var(--surface);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 200; flex-direction: column; gap: 12px;
+        }
+        .loading-spinner {
+            width: 32px; height: 32px;
+            border: 3px solid var(--border); border-top-color: var(--blue);
+            border-radius: 50%; animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 0.85rem; color: var(--muted); }
+
+        /* ── MODAL ──────────────────────── */
+        .modal-backdrop {
+            position: fixed; inset: 0;
+            background: rgba(15, 25, 50, 0.45);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+        .modal {
+            background: #fff; border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,30,90,0.18), 0 4px 12px rgba(0,30,90,0.08);
+            width: 560px; max-width: 92vw; max-height: 80vh;
+            display: flex; flex-direction: column;
+            transform: translateY(16px) scale(0.97);
+            transition: transform 0.22s ease;
+            overflow: hidden;
+        }
+        .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+
+        .modal-header {
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 12px;
+        }
+        .modal-header-icon {
+            width: 38px; height: 38px; background: var(--blue-light);
+            border-radius: 9px; display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .modal-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+        .modal-subtitle { font-size: 0.78rem; color: var(--muted); margin-top: 1px; }
+        .modal-close {
+            margin-left: auto; width: 30px; height: 30px; border: none;
+            background: transparent; cursor: pointer; border-radius: 6px;
+            color: var(--muted); font-size: 1.1rem; display: flex;
+            align-items: center; justify-content: center;
+            transition: background 0.12s, color 0.12s; flex-shrink: 0;
+        }
+        .modal-close:hover { background: #f0f4ff; color: var(--text); }
+
+        .modal-search-wrap {
+            padding: 14px 24px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .modal-search {
+            width: 100%; padding: 8px 12px;
+            border: 1px solid var(--border); border-radius: 8px;
+            font-family: inherit; font-size: 0.85rem; color: var(--text);
+            outline: none; transition: border-color 0.15s;
+            background: var(--surface);
+        }
+        .modal-search:focus { border-color: var(--blue); background: #fff; }
+
+        .modal-list {
+            flex: 1; overflow-y: auto; padding: 10px 14px 14px;
+            scrollbar-width: thin; scrollbar-color: #d0d8e8 transparent;
+            display: flex; flex-direction: column; gap: 6px;
+        }
+
+        .subject-card {
+            padding: 13px 16px; border-radius: 9px;
+            border: 1.5px solid var(--border);
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s, transform 0.1s;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .subject-card:hover { border-color: var(--blue); background: var(--blue-light); transform: translateX(2px); }
+        .subject-card.selected { border-color: var(--blue); background: var(--blue-light); }
+
+        .subject-card-badge {
+            width: 42px; height: 42px; border-radius: 9px;
+            background: var(--blue); color: #fff;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; text-align: center; line-height: 1.2;
+        }
+        .subject-card-info { flex: 1; min-width: 0; }
+        .subject-card-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+        .subject-card-meta { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+        .subject-card-check {
+            font-size: 1rem; color: var(--blue); flex-shrink: 0; opacity: 0;
+            transition: opacity 0.15s;
+        }
+        .subject-card.selected .subject-card-check { opacity: 1; }
+
+        .modal-empty { text-align: center; padding: 30px 0; color: var(--muted); font-size: 0.85rem; }
+
+        .modal-footer {
+            padding: 12px 24px;
+            border-top: 1px solid var(--border);
+            display: flex; justify-content: flex-end; gap: 8px;
+        }
+
+        /* error */
+        .error-screen {
+            position: fixed; inset: 0; background: var(--surface);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 200; flex-direction: column; gap: 10px; text-align: center; padding: 24px;
+        }
+        .error-title { font-size: 1rem; font-weight: 700; color: #c0392b; }
+        .error-body { font-size: 0.82rem; color: var(--muted); max-width: 380px; line-height: 1.65; }
+    </style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="loading-screen" id="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Đang tải dữ liệu môn học…</div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-header-text">
+            <div class="sidebar-logo">Hệ thống Azota · PTIT</div>
+            <div class="sidebar-title" id="sidebar-subject-title">—</div>
+        </div>
+        <button class="change-subject-btn" onclick="openModal()">Đổi môn</button>
+    </div>
+    <div class="chapter-list" id="chapter-list"></div>
+</div>
+
+<!-- Main -->
+<div class="main">
+    <div class="topbar">
+        <button class="toggle-btn" onclick="toggleSidebar()" title="Ẩn/hiện danh sách">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect y="3"    width="16" height="1.5" rx=".75" fill="currentColor"/>
+                <rect y="7.25" width="16" height="1.5" rx=".75" fill="currentColor"/>
+                <rect y="11.5" width="16" height="1.5" rx=".75" fill="currentColor"/>
+            </svg>
+        </button>
+        <div class="topbar-title">
+            <span id="current-title">Chọn một bài để bắt đầu</span>
+            <span class="topbar-subject" id="current-subject-label"></span>
+        </div>
+        <div class="topbar-actions">
+            <button class="btn btn-outline" onclick="openModal()">⊞ Chọn môn</button>
+            <button class="btn btn-outline" onclick="goToAzota()">Mở Azota ↗</button>
+        </div>
+    </div>
+    <div class="frame-wrap">
+        <iframe id="main-iframe" src="about:blank" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Subject Picker Modal -->
+<div class="modal-backdrop" id="modal-backdrop" onclick="handleBackdropClick(event)">
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="modal-header-icon">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                    <rect x="2"  y="2"  width="7" height="7" rx="2" fill="var(--blue)"/>
+                    <rect x="11" y="2"  width="7" height="7" rx="2" fill="var(--blue)" opacity=".4"/>
+                    <rect x="2"  y="11" width="7" height="7" rx="2" fill="var(--blue)" opacity=".4"/>
+                    <rect x="11" y="11" width="7" height="7" rx="2" fill="var(--blue)" opacity=".7"/>
+                </svg>
+            </div>
+            <div>
+                <div class="modal-title">Chọn môn học</div>
+                <div class="modal-subtitle" id="modal-subtitle">Đang tải…</div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-search-wrap">
+            <input class="modal-search" id="modal-search" type="text"
+                placeholder="🔍  Tìm kiếm môn học…" oninput="filterSubjects()" autocomplete="off"/>
+        </div>
+        <div class="modal-list" id="modal-list"></div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeModal()">Đóng</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ── CONFIG ─────────────────────────────────────────────────────
+// Đường dẫn tới file subjects.json (đặt cùng thư mục với index.html)
+const JSON_PATH = './subjects.json';
+// ──────────────────────────────────────────────────────────────
+
+let SUBJECTS = [];
+let activeSubjectId = null;
+let currentUrl = '';
+
+// ── BOOTSTRAP ──────────────────────────────────────────────────
+async function init() {
+    try {
+        const res = await fetch(JSON_PATH);
+        if (!res.ok) throw new Error(`HTTP ${res.status} — không tìm thấy file`);
+        SUBJECTS = await res.json();
+        if (!Array.isArray(SUBJECTS) || SUBJECTS.length === 0)
+            throw new Error('File JSON trống hoặc sai định dạng.');
+
+        document.getElementById('loading-screen').style.display = 'none';
+
+        // Preselect first subject but open modal so user picks
+        activeSubjectId = SUBJECTS[0].id;
+        renderChapters();
+        openModal();
+
+    } catch (err) {
+        document.getElementById('loading-screen').innerHTML = `
+            <div class="error-title">⚠ Không tải được subjects.json</div>
+            <div class="error-body">
+                Đặt <strong>index.html</strong> và <strong>subjects.json</strong> cùng thư mục,
+                rồi mở qua một máy chủ local (Live Server, http-server, v.v.) — không mở
+                trực tiếp bằng <code>file://</code> vì trình duyệt sẽ chặn fetch.<br><br>
+                <em>Lỗi: ${err.message}</em>
+            </div>
+        `;
+    }
+}
+
+// ── RENDER SIDEBAR ─────────────────────────────────────────────
+function renderChapters() {
+    const container = document.getElementById('chapter-list');
+    container.innerHTML = '';
+    const subject = getActive();
+    if (!subject) return;
+
+    document.getElementById('sidebar-subject-title').textContent = subject.name;
+
+    subject.chapters.forEach(ch => {
+        const group = document.createElement('div');
+        group.className = 'chapter-group';
+
+        const lbl = document.createElement('div');
+        lbl.className = 'chapter-label';
+        lbl.textContent = ch.title;
+        group.appendChild(lbl);
+
+        ch.exams.forEach(exam => {
+            const item = document.createElement('div');
+            item.className = 'exam-item' + (exam.url === currentUrl ? ' active' : '');
+            item.appendChild(document.createTextNode(exam.label));
+            if (exam.full) {
+                const tag = document.createElement('span');
+                tag.className = 'tag-full';
+                tag.textContent = 'FULL';
+                item.appendChild(tag);
+            }
+            item.onclick = () => loadExam(exam.url, ch.title + ' — ' + exam.label, subject.name);
+            group.appendChild(item);
+        });
+
+        container.appendChild(group);
+    });
+}
+
+function getActive() {
+    return SUBJECTS.find(s => s.id === activeSubjectId) || null;
+}
+
+// ── MODAL ──────────────────────────────────────────────────────
+function openModal() {
+    const backdrop = document.getElementById('modal-backdrop');
+    backdrop.classList.add('open');
+    document.getElementById('modal-search').value = '';
+    renderModalList('');
+    setTimeout(() => document.getElementById('modal-search').focus(), 80);
+
+    // Count total exams for subtitle
+    const totalExams = SUBJECTS.reduce((a, s) =>
+        a + s.chapters.reduce((b, c) => b + c.exams.length, 0), 0);
+    document.getElementById('modal-subtitle').textContent =
+        `${SUBJECTS.length} môn học · ${totalExams} đề thi`;
+}
+
+function closeModal() {
+    document.getElementById('modal-backdrop').classList.remove('open');
+}
+
+function handleBackdropClick(e) {
+    if (e.target === document.getElementById('modal-backdrop')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function filterSubjects() {
+    renderModalList(document.getElementById('modal-search').value);
+}
+
+function renderModalList(query) {
+    const list = document.getElementById('modal-list');
+    list.innerHTML = '';
+    const q = query.toLowerCase().trim();
+
+    const filtered = q
+        ? SUBJECTS.filter(s =>
+            s.name.toLowerCase().includes(q) || s.shortName.toLowerCase().includes(q))
+        : SUBJECTS;
+
+    if (filtered.length === 0) {
+        list.innerHTML = '<div class="modal-empty">Không tìm thấy môn học nào.</div>';
+        return;
+    }
+
+    filtered.forEach(s => {
+        const totalExams = s.chapters.reduce((a, c) => a + c.exams.length, 0);
+        const card = document.createElement('div');
+        card.className = 'subject-card' + (s.id === activeSubjectId ? ' selected' : '');
+        card.innerHTML = `
+            <div class="subject-card-badge">${s.shortName}</div>
+            <div class="subject-card-info">
+                <div class="subject-card-name">${s.name}</div>
+                <div class="subject-card-meta">${s.chapters.length} chương · ${totalExams} đề thi</div>
+            </div>
+            <div class="subject-card-check">✓</div>
+        `;
+        card.onclick = () => selectSubject(s.id);
+        list.appendChild(card);
+    });
+}
+
+function selectSubject(id) {
+    activeSubjectId = id;
+    currentUrl = '';
+    const s = getActive();
+    document.getElementById('main-iframe').src = 'about:blank';
+    document.getElementById('current-title').textContent = 'Chọn một bài để bắt đầu';
+    document.getElementById('current-subject-label').textContent = s ? ' · ' + s.name : '';
+    renderChapters();
+    closeModal();
+}
+
+// ── ACTIONS ────────────────────────────────────────────────────
+function loadExam(url, title, subjectName) {
+    document.getElementById('main-iframe').src = url;
+    currentUrl = url;
+    document.getElementById('current-title').textContent = 'Đang làm: ' + title;
+    document.getElementById('current-subject-label').textContent = ' · ' + subjectName;
+    renderChapters();
+}
+
+function goToAzota() {
+    if (currentUrl) window.open(currentUrl, '_blank', 'noopener,noreferrer');
+}
+
+function toggleSidebar() {
+    document.body.classList.toggle('sidebar-hidden');
+}
+
+// ── INIT ───────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
