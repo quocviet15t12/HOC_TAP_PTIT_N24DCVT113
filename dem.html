@@ -141,6 +141,20 @@
         .btn-primary:hover { background: var(--blue-dark); }
         .btn-outline { background: #fff; color: var(--blue); border: 1px solid #c5d4ef; }
         .btn-outline:hover { background: var(--blue-light); }
+        .ai-link-btn {
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ai-link-btn img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            display: block;
+        }
 
         .frame-wrap { flex: 1; padding: 16px; min-height: 0; }
         iframe {
@@ -307,6 +321,15 @@
         <div class="topbar-actions">
             <button class="btn btn-outline" onclick="openModal()">⊞ Chọn môn</button>
             <button class="btn btn-outline" onclick="goToAzota()">Mở Azota ↗</button>
+            <button class="btn btn-outline ai-link-btn" onclick="openClaude()" title="Mở Claude" aria-label="Mở Claude">
+                <img src="./claudeAI.png" alt="Claude">
+            </button>
+            <button class="btn btn-outline ai-link-btn" onclick="openGemini()" title="Mở Gemini" aria-label="Mở Gemini">
+                <img src="./gemini.png" alt="Gemini">
+            </button>
+            <button class="btn btn-outline ai-link-btn" onclick="openChatGPT()" title="Mở ChatGPT" aria-label="Mở ChatGPT">
+                <img src="./chatGPT.png" alt="ChatGPT">
+            </button>
         </div>
     </div>
     <div class="frame-wrap">
@@ -505,6 +528,18 @@ function loadExam(url, title, subjectName) {
 
 function goToAzota() {
     if (currentUrl) window.open(currentUrl, '_blank', 'noopener,noreferrer');
+}
+
+function openClaude() {
+    window.open('https://claude.ai/', '_blank', 'noopener,noreferrer');
+}
+
+function openGemini() {
+    window.open('https://gemini.google.com/app', '_blank', 'noopener,noreferrer');
+}
+
+function openChatGPT() {
+    window.open('https://chatgpt.com/', '_blank', 'noopener,noreferrer');
 }
 
 function toggleSidebar() {
