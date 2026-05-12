@@ -52,10 +52,9 @@
     "pass": "PASSVIDU2",
     "chapters": [
       {
-        "title": "Chương 1",
+        "title": "Phần 2. Câu 31 đến câu 60",
         "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/xxxxxx" },
-          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/yyyyyy", "full": true }
+          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/67csq5" }
         ]
       }
     ]
