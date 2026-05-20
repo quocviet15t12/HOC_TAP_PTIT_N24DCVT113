@@ -149,5 +149,29 @@
       }
 
     ]
+  },
+
+  {
+    "id": "ELE1309",
+    "name": "Điện tử số",
+    "shortName": "ĐTS",
+    "pass": "",
+    "chapters": [
+      {
+        "title": "Tổng Hợp Kiểm Tra",
+        "exams": [
+          {
+            "label": "Điện tử số Full",
+            "url": "https://azota.vn/de-thi/vujmuu",
+            "full": true
+          },
+          {
+            "label": "Điện tử số LT",
+            "url": "https://azota.vn/de-thi/eeyeqs"
+          }
+        ]
+      }
+    ]
   }
+  
 ]
