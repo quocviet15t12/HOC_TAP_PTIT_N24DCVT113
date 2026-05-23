@@ -8,43 +8,83 @@
       {
         "title": "Chương 1",
         "exams": [
-          { "label": "Luyện Tập P1", "url": "https://azota.vn/de-thi/manguz" },
-          { "label": "Luyện Tập P2", "url": "https://azota.vn/de-thi/k5kuwl" },
-          { "label": "Đề FULL",      "url": "https://azota.vn/de-thi/5l7rjw", "full": true }
+          {
+            "label": "Luyện Tập P1",
+            "url": "https://azota.vn/de-thi/manguz"
+          },
+          {
+            "label": "Luyện Tập P2",
+            "url": "https://azota.vn/de-thi/k5kuwl"
+          },
+          {
+            "label": "Đề FULL",
+            "url": "https://azota.vn/de-thi/5l7rjw",
+            "full": true
+          }
         ]
       },
       {
         "title": "Chương 2",
         "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/8ob3ss" },
-          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/cxq8ki", "full": true }
+          {
+            "label": "Luyện Tập",
+            "url": "https://azota.vn/de-thi/8ob3ss"
+          },
+          {
+            "label": "Đề FULL",
+            "url": "https://azota.vn/de-thi/cxq8ki",
+            "full": true
+          }
         ]
       },
       {
         "title": "Chương 3",
         "exams": [
-          { "label": "Luyện Tập P1", "url": "https://azota.vn/de-thi/cl3ajd" },
-          { "label": "Luyện Tập P2", "url": "https://azota.vn/de-thi/bgyebm" },
-          { "label": "Đề FULL",      "url": "https://azota.vn/de-thi/9hov7h", "full": true }
+          {
+            "label": "Luyện Tập P1",
+            "url": "https://azota.vn/de-thi/cl3ajd"
+          },
+          {
+            "label": "Luyện Tập P2",
+            "url": "https://azota.vn/de-thi/bgyebm"
+          },
+          {
+            "label": "Đề FULL",
+            "url": "https://azota.vn/de-thi/9hov7h",
+            "full": true
+          }
         ]
       },
       {
         "title": "Chương 4",
         "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/oniovr" },
-          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/a3yrmv", "full": true }
+          {
+            "label": "Luyện Tập",
+            "url": "https://azota.vn/de-thi/oniovr"
+          },
+          {
+            "label": "Đề FULL",
+            "url": "https://azota.vn/de-thi/a3yrmv",
+            "full": true
+          }
         ]
       },
       {
         "title": "Chương 5",
         "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/l5avci" },
-          { "label": "Đề FULL",   "url": "https://azota.vn/de-thi/wae0tc", "full": true }
+          {
+            "label": "Luyện Tập",
+            "url": "https://azota.vn/de-thi/l5avci"
+          },
+          {
+            "label": "Đề FULL",
+            "url": "https://azota.vn/de-thi/wae0tc",
+            "full": true
+          }
         ]
       }
     ]
   },
-
   {
     "id": "BSA1221",
     "name": "Pháp luật đại cương",
@@ -52,105 +92,60 @@
     "pass": "PASSVIDU2",
     "chapters": [
       {
-        "title": "Phần 1. Câu 1 đến câu 30",
+        "title": "Luyện tập 344 câu trắc nghiệm",
         "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/bwpjab" }
-        ]
-      },
-      {
-        "title": "Phần 2. Câu 31 đến câu 60",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/67csq5" }
-        ]
-      },
-      {
-        "title": "Phần 3. Câu 61 đến câu 90",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/nh1mro" }
-        ]
-      },
-      {
-        "title": "Phần 4. Câu 91 đến câu 120",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/olkfzm" }
-        ]
-      },
-      {
-        "title": "Phần 5. Câu 121 đến câu 150",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/f0w4ts" }
-        ]
-      },
-      {
-        "title": "Phần 6. Câu 151 đến câu 180",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/7o1xjw" }
-        ]
-      },
-      {
-        "title": "Phần 7. Câu 181 đến câu 210",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/fyanzi" }
-        ]
-      },
-      {
-        "title": "Phần 8. Câu 211 đến câu 240",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/u0uhu2" }
-        ]
-      },
-      {
-        "title": "Phần 9. Câu 241 đến câu 270",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/uizef3" }
-        ]
-      },
-      {
-        "title": "Phần 10. Câu 271 đến câu 300",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/hxpoqe" }
-        ]
-      },
-      {
-        "title": "Phần 11. Câu 301 đến câu 330",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/rrqnfw" }
-        ]
-      },
-      {
-        "title": "Phần 12. Câu 331 đến câu 360",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/9qjlgu" }
-        ]
-      },
-      {
-        "title": "Phần 13. Câu 361 đến câu 390",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/7ywrlw" }
-        ]
-      },
-      {
-        "title": "Phần 14. Câu 391 đến câu 420",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/1odyox" }
-        ]
-      },
-      {
-        "title": "Phần 15. Câu 421 đến câu 450",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/ptwm5r" }
-        ]
-      },
-      {
-        "title": "Phần 16. Câu 451 đến câu 470",
-        "exams": [
-          { "label": "Luyện Tập", "url": "https://azota.vn/de-thi/r8ou2h" }
+          {
+            "label": "PHẦN 1. CÂU 1 ĐẾN 30",
+            "url": "https://azota.vn/de-thi/j99fvo"
+          },
+          {
+            "label": "PHẦN 2. CÂU 31 ĐẾN 60",
+            "url": "https://azota.vn/de-thi/pe8kdc"
+          },
+          {
+            "label": "PHẦN 3. CÂU 61 ĐẾN 90",
+            "url": "https://azota.vn/de-thi/js5c4s"
+          },
+          {
+            "label": "PHẦN 4. CÂU 91 ĐẾN 120",
+            "url": "https://azota.vn/de-thi/kg0uod"
+          },
+          {
+            "label": "PHẦN 5. CÂU 121 ĐẾN 150",
+            "url": "https://azota.vn/de-thi/damxls"
+          },
+          {
+            "label": "PHẦN 6. CÂU 151 ĐẾN 180",
+            "url": "https://azota.vn/de-thi/vipzbw"
+          },
+          {
+            "label": "PHẦN 7. CÂU 181 ĐẾN 210",
+            "url": "https://azota.vn/de-thi/9oe1ww"
+          },
+          {
+            "label": "PHẦN 8. CÂU 211 ĐẾN 240",
+            "url": "https://azota.vn/de-thi/q9tvja"
+          },
+          {
+            "label": "PHẦN 9. CÂU 241 ĐẾN 270",
+            "url": "https://azota.vn/de-thi/pu4qsl"
+          },
+          {
+            "label": "PHẦN 10. CÂU 271 ĐẾN 300",
+            "url": "https://azota.vn/de-thi/lyws0y"
+          },
+          {
+            "label": "PHẦN 11. CÂU 301 ĐẾN 330",
+            "url": "https://azota.vn/de-thi/wvtyhq"
+          },
+          {
+            "label": "PHẦN 12. CÂU 331 ĐẾN 344",
+            "url": "https://azota.vn/de-thi/yvtsio"
+          }
         ]
       }
-
     ]
   },
-
   {
     "id": "ELE1309",
     "name": "Điện tử số",
@@ -173,5 +168,4 @@
       }
     ]
   }
-  
 ]
