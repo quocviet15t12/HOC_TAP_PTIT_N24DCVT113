@@ -92,77 +92,11 @@
     "pass": "PASSVIDU2",
     "chapters": [
       {
-        "title": "PLĐC",
+        "title": "Ôn tập",
         "exams": [
           {
-            "label": "PHẦN 1. CÂU 1 ĐẾN 30",
-            "url": "https://azota.vn/de-thi/j99fvo"
-          },
-          {
-            "label": "PHẦN 2. CÂU 31 ĐẾN 60",
-            "url": "https://azota.vn/de-thi/pe8kdc"
-          },
-          {
-            "label": "PHẦN 3. CÂU 61 ĐẾN 90",
-            "url": "https://azota.vn/de-thi/js5c4s"
-          },
-          {
-            "label": "PHẦN 4. CÂU 91 ĐẾN 120",
-            "url": "https://azota.vn/de-thi/kg0uod"
-          },
-          {
-            "label": "PHẦN 5. CÂU 121 ĐẾN 150",
-            "url": "https://azota.vn/de-thi/damxls"
-          },
-          {
-            "label": "PHẦN 6. CÂU 151 ĐẾN 180",
-            "url": "https://azota.vn/de-thi/vipzbw"
-          },
-          {
-            "label": "PHẦN 7. CÂU 181 ĐẾN 210",
-            "url": "https://azota.vn/de-thi/9oe1ww"
-          },
-          {
-            "label": "PHẦN 8. CÂU 211 ĐẾN 240",
-            "url": "https://azota.vn/de-thi/q9tvja"
-          },
-          {
-            "label": "PHẦN 9. CÂU 241 ĐẾN 270",
-            "url": "https://azota.vn/de-thi/pu4qsl"
-          },
-          {
-            "label": "PHẦN 10. CÂU 271 ĐẾN 300",
-            "url": "https://azota.vn/de-thi/lyws0y"
-          },
-          {
-            "label": "PHẦN 11. CÂU 301 ĐẾN 330",
-            "url": "https://azota.vn/de-thi/wvtyhq"
-          },
-          {
-            "label": "PHẦN 12. CÂU 331 ĐẾN 344",
-            "url": "https://azota.vn/de-thi/yvtsio"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "ELE1309",
-    "name": "Điện tử số",
-    "shortName": "ĐTS",
-    "pass": "",
-    "chapters": [
-      {
-        "title": "Tổng Hợp Kiểm Tra",
-        "exams": [
-          {
-            "label": "Điện tử số Full",
-            "url": "https://azota.vn/de-thi/vujmuu",
-            "full": true
-          },
-          {
-            "label": "Điện tử số LT",
-            "url": "https://azota.vn/de-thi/eeyeqs"
+            "label": "PLDC BY PTITQUIZZ",
+            "url": "https://ptitquizz.web.app/practice-review/phap-luat-dai-cuong-theo-chuong"
           }
         ]
       }
