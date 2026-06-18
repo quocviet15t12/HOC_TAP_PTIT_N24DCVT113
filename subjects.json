@@ -84,22 +84,5 @@
         ]
       }
     ]
-  },
-  {
-    "id": "BSA1221",
-    "name": "Pháp luật đại cương",
-    "shortName": "BSA1221",
-    "pass": "PASSVIDU2",
-    "chapters": [
-      {
-        "title": "Ôn tập",
-        "exams": [
-          {
-            "label": "PLDC BY PTITQUIZZ",
-            "url": "https://ptitquizz.web.app/practice-review/phap-luat-dai-cuong-theo-chuong"
-          }
-        ]
-      }
-    ]
   }
 ]
